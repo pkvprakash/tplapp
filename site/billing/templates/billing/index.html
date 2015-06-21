@@ -1,0 +1,18 @@
+{% if last_entries %}
+    <table border="1">
+	<tr>
+		<th>Booking ID</th>
+		<th>Booking Type</th>
+		<th>Date</th>
+	</tr>
+    {% for entry in last_entries %}
+	<tr>
+        	<td><a href="/billing/{{ entry.id }}/">{{ entry.id }}</a></td>
+        	<td>{{ entry.billing_type.type_name }}</td>
+        	<td>{{ entry.billing_date }}</td>
+	</tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No offerings are available.</p>
+{% endif %}

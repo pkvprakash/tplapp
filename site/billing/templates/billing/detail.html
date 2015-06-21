@@ -1,0 +1,33 @@
+{% if bill_meta %}
+    <ul>
+        <li>ID : {{ bill_meta.id }} </li>
+	<li>Type : {{ bill_meta.billing_type.type_name }}</li>
+	<li>Date : {{ bill_meta.billing_date }}</li>
+    </ul>
+
+
+{% if bill_entries %}
+    <table border="1">
+	<tr>
+		<th>Name</th>
+		<th>Star</th>
+		<th>Offering</th>
+		<th>Price</th>
+	</tr>
+    {% for entry in bill_entries %}
+	<tr>
+        	<td>{{ entry.bill_name  }}</td>
+        	<td>{{ entry.bill_star }}</td>
+        	<td>{{ entry.bill_offer.offer_name }}</td>
+        	<td>{{ entry.bill_offer.offer_price }}</td>
+	</tr>
+    {% endfor %}
+	<tr colspan="4">
+		<td>Total : {{ total }}</td>
+	</tr>
+    </table>
+{% else %}
+    <p>No offerings are available.</p>
+{% endif %}
+{% endif %}
+
